@@ -14,6 +14,9 @@
     <div class="nav-links">
       <a href="index.html">首页</a>
       <a href="about.html">关于</a>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span class="icon">&#9788;</span><span>护眼</span>
+      </button>
     </div>
   </div>
 </nav>
@@ -39,5 +42,22 @@
   &copy; 2026 我的博客 &middot; Powered by HTML &amp; CSS
 </footer>
 
+<script>
+(function() {
+  if (localStorage.getItem('theme') === 'eye') {
+    document.body.classList.add('theme-eye');
+  }
+})();
+function toggleTheme() {
+  var btn = document.querySelector('.theme-toggle span:last-child');
+  if (document.body.classList.toggle('theme-eye')) {
+    localStorage.setItem('theme', 'eye');
+    btn.textContent = '日常';
+  } else {
+    localStorage.setItem('theme', 'day');
+    btn.textContent = '护眼';
+  }
+}
+</script>
 </body>
 </html>
